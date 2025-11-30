@@ -120,3 +120,45 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+@layer utilities {
+  /* Gradient text helper — apply this to the element that actually contains text.
+     Important: must include text-transparent + bg-clip-text on the same element (Tailwind classes),
+     or use this class which sets both. Use on the same element that renders text or wrapper around SplitText. */
+  .gradient-text {
+    background-image: linear-gradient(90deg, #10b981, #06b6d4, #7c3aed);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block; /* ensures single continuous gradient across the text */
+    /* optional smoothing */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* shorter alias if you prefer Tailwind-like class name */
+  .bg-clip-text-opaque {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  /* marquee animation used in the header ticker */
+  @keyframes tailwind-marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee {
+    animation: tailwind-marquee 18s linear infinite;
+    white-space: nowrap;
+  }
+
+  /* small helper for subtle blur or glow backgrounds (optional) */
+  .soft-glow {
+    filter: blur(24px);
+    opacity: 0.12;
+  }
+}

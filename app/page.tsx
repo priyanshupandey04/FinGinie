@@ -103,19 +103,6 @@ export default function LandingPage() {
     return () => observer.disconnect();
   }, []);
 
-  // pick gradient based on activeSection
-  const progressGradient = (() => {
-    switch (activeSection) {
-      case "how":
-        return "linear-gradient(90deg,#06b6d4 0%, #10b981 100%)";
-      case "features":
-        return "linear-gradient(90deg,#7c3aed 0%, #06b6d4 100%)";
-      case "feedback":
-        return "linear-gradient(90deg,#06b6d4 0%, #3b82f6 100%)";
-      default:
-        return "linear-gradient(90deg,#10b981 0%, #06b6d4 100%)";
-    }
-  })();
 
   return (
     <div className="min-h-screen bg-[#0d1117] text-white font-sans selection:bg-emerald-500/30 overflow-x-hidden">
@@ -138,7 +125,7 @@ export default function LandingPage() {
       {/* Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 origin-left z-[60]"
-        style={{ scaleX, background: progressGradient }}
+        style={{ scaleX, background: "linear-gradient(50deg,#10b981 0%, #06b6d4 100%)" }}
       />
 
       {/* --- NAVBAR --- */}
@@ -155,7 +142,7 @@ export default function LandingPage() {
               <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <TrendingUp className="text-emerald-400 w-5 h-5 relative z-10" />
             </div>
-            <span className="text-xl font-bold tracking-tight text-gray-100">
+            <span className="text-xl font-bold  text-gray-100">
               FinGinie<span className="text-emerald-500">.AI</span>
             </span>
           </div>
@@ -232,11 +219,11 @@ export default function LandingPage() {
 
             <motion.h1
               variants={fadeInUp}
-              className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-none mb-8 text-white"
+              className="text-5xl md:text-7xl lg:text-8xl font-extrabold  leading-none  text-white"
             >
               <SplitText
                 text="Wealth Logic, "
-                className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-none mb-8 text-white"
+                className="text-5xl md:text-7xl lg:text-8xl font-extrabold  leading-none  text-white"
                 delay={100}
                 duration={0.6}
                 ease="power3.out"
@@ -248,18 +235,13 @@ export default function LandingPage() {
                 textAlign="center"
               />
               <br />
-              <div className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-200 bg-clip-text ">
+              <div className="gradient-text">
                 <SplitText
                   text="Decoded & Optimized. "
-                  className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8  "
+                  className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 text-white"
                   delay={100}
                   duration={0.6}
-                  ease="power3.out"
                   splitType="chars"
-                  from={{ opacity: 0, y: 40 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-100px"
                   textAlign="center"
                 />
               </div>
@@ -349,9 +331,6 @@ export default function LandingPage() {
           <span className="text-red-400">GOLD -0.12%</span>
           <span className="text-emerald-400">NASDAQ +0.8%</span>
           <span className="text-red-400">GOOG -0.12%</span>
-
-
-
         </div>
       </div>
 
