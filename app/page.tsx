@@ -21,6 +21,8 @@ import {
   Quote,
 } from "lucide-react";
 import { motion, useScroll, useSpring, Variants } from "framer-motion";
+import DotGrid from "@/components/DotGrid";
+import SplitText from "@/components/SplitText";
 
 // --- Types & Interfaces ---
 interface StepData {
@@ -44,7 +46,7 @@ interface TestimonialData {
 // Typed using Variants; removed `ease: "easeOut"` (-> keep only duration)
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.69 } },
 };
 
 const staggerContainer: Variants = {
@@ -108,8 +110,6 @@ export default function LandingPage() {
         return "linear-gradient(90deg,#06b6d4 0%, #10b981 100%)";
       case "features":
         return "linear-gradient(90deg,#7c3aed 0%, #06b6d4 100%)";
-      case "reviews":
-        return "linear-gradient(90deg,#f59e0b 0%, #ef4444 100%)";
       case "feedback":
         return "linear-gradient(90deg,#06b6d4 0%, #3b82f6 100%)";
       default:
@@ -127,9 +127,6 @@ export default function LandingPage() {
           100% {
             transform: translateX(-50%);
           }
-        }
-        .animate-marquee {
-          animation: marquee 18s linear infinite;
         }
         .text-gradient {
           background-clip: text;
@@ -203,10 +200,21 @@ export default function LandingPage() {
       <section
         data-section="hero"
         id="hero"
-        className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden"
+        className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-black/90"
       >
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-12 pointer-events-none"></div>
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-500/8 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+        <div className="absolute h-full w-full top-0 left-0">
+          <DotGrid
+            dotSize={5}
+            gap={15}
+            baseColor="#090618FF"
+            activeColor="#5227FF"
+            proximity={100}
+            shockRadius={250}
+            shockStrength={5}
+            resistance={750}
+            returnDuration={1.5}
+          />
+        </div>
 
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
           <motion.div
@@ -219,17 +227,42 @@ export default function LandingPage() {
               className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-gray-800/50 border border-gray-700 text-emerald-400 text-xs font-mono font-medium mb-8 backdrop-blur-sm"
             >
               <Zap className="w-3 h-3 fill-emerald-400" />
-              <span>v2.0.4 PROD BUILD • Team 26 Major Project</span>
+              <span>v2.0.4 PROD BUILD </span>
             </motion.div>
 
             <motion.h1
               variants={fadeInUp}
               className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-none mb-8 text-white"
             >
-              Wealth Logic, <br />
-              <span className="text-gradient bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400">
-                Decoded & Optimized.
-              </span>
+              <SplitText
+                text="Wealth Logic, "
+                className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-none mb-8 text-white"
+                delay={100}
+                duration={0.6}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="center"
+              />
+              <br />
+              <div className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-200 bg-clip-text ">
+                <SplitText
+                  text="Decoded & Optimized. "
+                  className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8  "
+                  delay={100}
+                  duration={0.6}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                  textAlign="center"
+                />
+              </div>
             </motion.h1>
 
             <motion.p
@@ -301,7 +334,7 @@ export default function LandingPage() {
           </span>
           <span className="text-gray-600">|</span>
           <span className="flex items-center gap-2">
-            <Server className="w-3 h-3 text-blue-500" /> NODE.JS BACKEND
+            <Server className="w-3 h-3 text-blue-500" /> Best Forecasting
           </span>
           <span className="text-gray-600">|</span>
           <span className="flex items-center gap-2">
@@ -315,6 +348,10 @@ export default function LandingPage() {
           <span className="text-emerald-400">NIFTY +1.24%</span>
           <span className="text-red-400">GOLD -0.12%</span>
           <span className="text-emerald-400">NASDAQ +0.8%</span>
+          <span className="text-red-400">GOOG -0.12%</span>
+
+
+
         </div>
       </div>
 
