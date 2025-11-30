@@ -103,7 +103,6 @@ export default function LandingPage() {
     return () => observer.disconnect();
   }, []);
 
-
   return (
     <div className="min-h-screen bg-[#0d1117] text-white font-sans selection:bg-emerald-500/30 overflow-x-hidden">
       <style jsx>{`
@@ -125,7 +124,10 @@ export default function LandingPage() {
       {/* Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 origin-left z-[60]"
-        style={{ scaleX, background: "linear-gradient(50deg,#10b981 0%, #06b6d4 100%)" }}
+        style={{
+          scaleX,
+          background: "linear-gradient(50deg,#10b981 0%, #06b6d4 100%)",
+        }}
       />
 
       {/* --- NAVBAR --- */}
@@ -310,7 +312,7 @@ export default function LandingPage() {
 
       {/* --- TICKER SECTION --- */}
       <div className="w-full bg-[#161b22] border-y border-gray-800 overflow-hidden py-3">
-        <div className="flex animate-marquee whitespace-nowrap gap-12 text-xs font-mono text-gray-400 uppercase tracking-widest px-6">
+        <div className="flex marquee whitespace-nowrap gap-12 text-xs font-mono text-gray-400 uppercase tracking-widest px-6">
           <span className="flex items-center gap-2">
             <Activity className="w-3 h-3 text-emerald-500" /> SYSTEM ONLINE
           </span>
@@ -335,7 +337,7 @@ export default function LandingPage() {
       </div>
 
       {/* --- PROBLEM STATEMENT --- */}
-      <section className="py-24 bg-[#0d1117] border-b border-gray-800">
+      <section className="py-24 bg-[#0d1117] border-b border-gray-800 ">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
@@ -449,7 +451,7 @@ export default function LandingPage() {
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-4">Technical Capabilities</h2>
             <p className="text-gray-400 max-w-2xl">
-              Built with a modern tech stack to ensure reliability and speed.
+              Built with a modern technology to ensure reliability and speed.
               This keeps your demo production-like and evaluable.
             </p>
           </div>
@@ -463,17 +465,17 @@ export default function LandingPage() {
             <FeatureCard
               icon={Lock}
               title="Bank-Grade Security"
-              desc="Inputs and outputs are stored in isolated DB clusters with encrypted transport."
+              desc="Inputs and outputs are encrypted transport."
             />
             <FeatureCard
               icon={Smartphone}
               title="Responsive UI"
-              desc="PWA-ready React + Tailwind design for any device."
+              desc="PWA-ready design for any device."
             />
             <FeatureCard
               icon={Cpu}
-              title="Optional Forecasting"
-              desc="Optional FastAPI microservice for ML forecasting can be added later."
+              title=" Forecasting"
+              desc="AI-ML forecasting can be added later."
             />
             <FeatureCard
               icon={Globe}
@@ -493,7 +495,7 @@ export default function LandingPage() {
       <section
         id="reviews"
         data-section="reviews"
-        className="py-24 bg-[#0d1117] border-t border-gray-800"
+        className="pt-10 bg-[#0d1117] border-t border-gray-800"
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
