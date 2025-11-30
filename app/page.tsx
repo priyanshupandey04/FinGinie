@@ -189,7 +189,7 @@ export default function LandingPage() {
       <section
         data-section="hero"
         id="hero"
-        className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-black/90"
+        className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-black/90 select-none"
       >
         <div className="absolute h-full w-full top-0 left-0">
           <DotGrid
