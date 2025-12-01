@@ -152,7 +152,6 @@ const SignUpForm = () => {
           borderRadius: "0.5rem",
           padding: "0.5rem",
           margin: "0.5rem",
-          shadow: "0px 50px 10px rgba(48, 451, 0, 0.5)",
         }
       });
       setErrors({});
