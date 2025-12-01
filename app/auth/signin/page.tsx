@@ -2,6 +2,7 @@
 
 import ElectricBorder from "@/components/ElectricBorder";
 import { Spinner } from "@/components/ui/spinner";
+import { SmilePlus } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useRef, useState } from "react";
@@ -101,9 +102,13 @@ const Form = () => {
   };
   return (
     <div className="w-full ">
-      <h1 className="text-2xl font-sans text-white text-center mb-5 font-bold">
+      <h1 className="text-2xl font-sans text-white text-center mb-5 font-bold flex justify-center items-center gap-2">
         Welcome back
+        <SmilePlus className="hover:text-purple-400 transition-colors duration-300"/>
       </h1>
+      <h2 className="text-sm text-white/90 text-center mb-3">
+        Enter your email and password to sign in.
+      </h2>
       <form
         onSubmit={handleSubmit}
         className="w-full flex flex-col items-center gap-4"
@@ -178,6 +183,18 @@ const Form = () => {
           {!isSigningIn && "Sign in"}
         </button>
         {error.length > 0 && <p className="text-sm text-red-500">{error}</p>}
+
+        <p className="text-sm text-white/70 text-center z-1">
+          Dont have an account?{" "}
+          <span
+            className="underline cursor-pointer"
+            onClick={() => {
+              router.push("/auth/signup");
+            }}
+          >
+            Sign up
+          </span>
+        </p>
       </form>
     </div>
   );

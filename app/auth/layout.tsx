@@ -18,10 +18,10 @@ const layout = async (props: Props) => {
   }
 
   return (
-    <div className="bg-black h-[100vh]  w-[100vw] relative overflow-hidden">
-      <div className="circlularColoredBlur h-52 w-52 blur-[80px] absolute -right-10 -bottom-10 md:hidden" />
-
-      <div className="bg-black h-[80%] md:h-[100%] w-[100vw] flex items-center justify-center">
+    <div className="bg-black h-[100vh]  w-[100vw] relative overflow-hidden ">
+      <div className="circlularColoredBlur h-52 w-52 blur-[80px] absolute -right-10 -bottom-10 md:hidden " />
+    
+      <div className="bg-black h-[100%] md:h-[100%] w-[100vw] flex items-center justify-center ">
         {props.children}
       </div>
     </div>

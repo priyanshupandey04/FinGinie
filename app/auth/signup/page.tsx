@@ -2,17 +2,19 @@
 
 import ElectricBorder from "@/components/ElectricBorder";
 import { Spinner } from "@/components/ui/spinner";
+import { BadgePlus } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React, { ChangeEvent, FormEvent, useRef, useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 
 const signUpSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters" }),
+  name: z.string().min(5, { message: "Name must be at least 5 characters" }),
   email: z.string().email({ message: "Enter a valid email" }),
   password: z
     .string()
     .min(6, { message: "Password must be at least 6 characters" })
-    .max(64, { message: "Password must be at most 64 characters" }),
+    .max(20, { message: "Password must be at most 20 characters" }),
   confirmPassword: z.string(),
   phone: z
     .string()
@@ -45,6 +47,8 @@ const SignUpPage = () => {
 };
 
 const SignUpForm = () => {
+  const router = useRouter();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -128,6 +132,13 @@ const SignUpForm = () => {
 
       console.log("data = ", json);
 
+      if (json.error) {
+        setErrors((prev) => {
+          return { ...prev, ["general"]: json.error };
+        });
+        return;
+      }
+
       // reset form or redirect
       setForm({
         name: "",
@@ -145,18 +156,18 @@ const SignUpForm = () => {
           onClick: () => console.log("Undo"),
         },
         duration: 3000,
-        style:{
+        style: {
           background: "#0d1117",
           color: "#ffffff",
           border: "1px solid #ffffff",
           borderRadius: "0.5rem",
           padding: "0.5rem",
           margin: "0.5rem",
-        }
+        },
       });
       setErrors({});
-      // e.g., router.push('/welcome') or show success toast
-      alert("Sign up successful (demo). Replace with real API call.");
+      await new Promise((r) => setTimeout(r, 1000));
+      router.push("/auth/signin");
     } catch (err) {
       // map server errors to fields if possible
       setErrors({ general: "Something went wrong. Try again." });
@@ -166,10 +177,15 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="w-full">
-      <h1 className="text-2xl font-sans text-white text-center mb-5 font-bold">
+    <div className="w-full bg-transparent">
+      <h1 className="text-2xl font-sans text-white text-center mb-5 font-bold flex justify-center items-center gap-2">
         Create account
+        <BadgePlus className="hover:text-purple-400 transition-colors duration-300" />
       </h1>
+
+      <h2 className="text-sm text-white/90 text-center mb-3">
+        Enter your details to create an account
+      </h2>
 
       <form
         onSubmit={handleSubmit}
@@ -180,7 +196,7 @@ const SignUpForm = () => {
           <div
             className={`text-white/70 absolute ${
               form.name.length > 0
-                ? "-top-1 md:-top-2 left-6 md:left-8 text-xs"
+                ? "-top-2 md:-top-2 left-6 md:left-8 text-xs"
                 : "top-2 left-6 md:left-8 text-base md:-z-10 text-white select-none"
             }  bg-black transition-all duration-200 linear`}
           >
@@ -207,7 +223,7 @@ const SignUpForm = () => {
           <div
             className={`text-white/70 absolute ${
               form.email.length > 0
-                ? "-top-1 md:-top-2 left-6 md:left-8 text-xs"
+                ? "-top-2 md:-top-2 left-6 md:left-8 text-xs"
                 : "top-2 left-6 md:left-8 text-base md:-z-10 text-white select-none"
             }  bg-black transition-all duration-200 linear`}
           >
@@ -237,7 +253,7 @@ const SignUpForm = () => {
           <div
             className={`text-white/70 absolute ${
               form.password.length > 0
-                ? "-top-1 md:-top-2 left-6 md:left-8 text-xs"
+                ? "-top-2 md:-top-2 left-6 md:left-8 text-xs"
                 : "top-2 left-6 md:left-8 text-base md:-z-10 text-white select-none"
             }  bg-black transition-all duration-200 linear`}
           >
@@ -267,7 +283,7 @@ const SignUpForm = () => {
           <div
             className={`text-white/70 absolute ${
               form.confirmPassword.length > 0
-                ? "-top-1 md:-top-2 left-6 md:left-8 text-xs"
+                ? "-top-2 md:-top-2 left-6 md:left-8 text-xs"
                 : "top-2 left-6 md:left-8 text-base md:-z-10 text-white select-none"
             }  bg-black transition-all duration-200 linear`}
           >
@@ -297,7 +313,7 @@ const SignUpForm = () => {
           <div
             className={`text-white/70 absolute ${
               form.phone.length > 0
-                ? "-top-1 md:-top-2 left-6 md:left-8 text-xs"
+                ? "-top-2 md:-top-2 left-6 md:left-8 text-xs"
                 : "top-2 left-6 md:left-8 text-base md:-z-10 text-white select-none"
             }  bg-black transition-all duration-200 linear`}
           >
@@ -323,7 +339,7 @@ const SignUpForm = () => {
 
         {/* General server error */}
         {errors.general && (
-          <p className="text-xs text-red-500">{errors.general}</p>
+          <p className="text-sm text-red-500">{errors.general}</p>
         )}
 
         <button
@@ -339,17 +355,18 @@ const SignUpForm = () => {
           {isSubmitting && "Creating account..."}
           {!isSubmitting && "Create account"}
         </button>
+        <p className="text-sm text-white/70 text-center z-1">
+          Already have an account?{" "}
+          <span
+            className="underline cursor-pointer"
+            onClick={() => {
+              router.push("/auth/signin");
+            }}
+          >
+            Sign in
+          </span>
+        </p>
       </form>
-
-      <p className="text-sm text-white/70 mt-3 text-center">
-        Already have an account?{" "}
-        <span
-          className="underline cursor-pointer"
-          // onClick={}
-        >
-          Sign in
-        </span>
-      </p>
     </div>
   );
 };
