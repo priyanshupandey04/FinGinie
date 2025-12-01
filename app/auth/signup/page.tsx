@@ -169,7 +169,6 @@ const SignUpForm = () => {
       await new Promise((r) => setTimeout(r, 1000));
       router.push("/auth/signin");
     } catch (err) {
-      // map server errors to fields if possible
       setErrors({ general: "Something went wrong. Try again." });
     } finally {
       setIsSubmitting(false);

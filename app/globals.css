@@ -122,12 +122,10 @@
 }
 
 @layer utilities {
-
   input:-webkit-autofill {
     box-shadow: 0 0 0 1000px rgb(13 11 20) inset !important;
     -webkit-text-fill-color: white !important;
   }
-
 
   /* Gradient text helper — apply this to the element that actually contains text.
      Important: must include text-transparent + bg-clip-text on the same element (Tailwind classes),

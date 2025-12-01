@@ -11,7 +11,7 @@ type Props = {
 const layout = async (props: Props) => {
   const session: Session | null = await getServerSession(authOptions as any);
 
-  console.log("session = ", session);
+  console.log("..session = ", session);
 
   if(session){
     redirect("/dashboard");
