@@ -180,7 +180,7 @@ export default function LandingClient(props: { session: Session | null }) {
           <div className="flex gap-4">
             {!props.session && (
               <button
-                className="hidden sm:block text-sm font-semibold text-white hover:text-emerald-400 transition-colors"
+                className=" sm:block text-sm font-semibold text-white hover:text-emerald-400 transition-colors"
                 onClick={() => router.push("/auth/signin")}
               >
                 Sign In
