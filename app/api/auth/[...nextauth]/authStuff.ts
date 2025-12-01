@@ -8,11 +8,11 @@ export const authOptions = {
   adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt", // JWT sessions
-    maxAge: Number(process.env.NEXTAUTH_JWT_MAX_AGE ?? 60 * 15),
+    maxAge: Number(process.env.NEXTAUTH_JWT_MAX_AGE ?? 60 * 5), // 5 minutes
   },
   jwt: {
     secret: process.env.JWT_SECRET ?? process.env.NEXTAUTH_SECRET,
-    maxAge: Number(process.env.NEXTAUTH_JWT_MAX_AGE ?? 60 * 15),
+    maxAge: Number(process.env.NEXTAUTH_JWT_MAX_AGE ?? 60 * 5), // 5 minutes
   },
   providers: [
     CredentialsProvider({
@@ -27,13 +27,14 @@ export const authOptions = {
         const user = await prisma.user.findUnique({
           where: { email: credentials.email },
         });
-
         if (!user || !user.password) return null;
-
+        
+        console.log("user = ", user);
         const isValid = await bcrypt.compare(
           credentials.password,
           user.password
         );
+        
         if (!isValid) return null;
 
         return {

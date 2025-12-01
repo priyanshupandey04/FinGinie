@@ -121,7 +121,6 @@
   }
 }
 
-
 @layer utilities {
   /* Gradient text helper — apply this to the element that actually contains text.
      Important: must include text-transparent + bg-clip-text on the same element (Tailwind classes),
@@ -147,13 +146,41 @@
 
   /* marquee animation used in the header ticker */
   @keyframes tailwind-marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   .marquee {
     animation: tailwind-marquee 18s linear infinite;
     white-space: nowrap;
+  }
+
+  .circlularColoredBlur {
+    background: radial-gradient(circle, rgb(24, 4, 177));
+  }
+
+  .error {
+    border: 2px solid red;
+    animation: errorAnimate 0.1s linear 2;
+  }
+
+  @keyframes errorAnimate {
+    0% {
+      transform: translateX(0%);
+    }
+    50% {
+      transform: translateX(-2%);
+    }
+    75% {
+      transform: translateX(2%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
   }
 
   /* small helper for subtle blur or glow backgrounds (optional) */
