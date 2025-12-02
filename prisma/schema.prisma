@@ -1,18 +1,54 @@
 datasource db {
-  provider = "postgresql" // or "sqlite"
+  provider = "postgresql"
 }
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated"
+  provider = "prisma-client-js"
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String?
+  phone     String?
+  image     String?
   createdAt DateTime @default(now())
-  password String
-  image String?
-  phone String?
+
+  plans Plan[]
+}
+
+model Plan {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  label     String? // (optional: "My SIP Plan")
+  createdAt DateTime @default(now())
+
+  startDate         DateTime
+  endDate           DateTime
+  lastPlanVersionId Int
+
+  // Relation
+  user     User          @relation(fields: [userId], references: [id])
+  versions PlanVersion[]
+}
+
+model PlanVersion {
+  id        Int      @id @default(autoincrement())
+  planId    Int
+  createdAt DateTime @default(now())
+
+  monthlyInvestment Int // M
+  riskScore         Int // 1..10
+
+  startDate DateTime // When this version becomes active
+  endDate   DateTime // When this version is no longer active 
+
+  // Optional but useful now (minimal)
+  age    Int?
+  income Int?
+  notes  String?
+
+  // Relation
+  plan Plan @relation(fields: [planId], references: [id])
 }

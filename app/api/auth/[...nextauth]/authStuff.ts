@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 
 export const authOptions = {
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma as any),
   session: {
     strategy: "jwt", // JWT sessions
     maxAge: Number(process.env.NEXTAUTH_JWT_MAX_AGE ?? 60 * 5), // 5 minutes
@@ -28,20 +28,20 @@ export const authOptions = {
           where: { email: credentials.email },
         });
         if (!user || !user.password) return null;
-        
+
         console.log("user = ", user);
         const isValid = await bcrypt.compare(
           credentials.password,
           user.password
         );
-        
+
         if (!isValid) return null;
 
         return {
           id: String(user.id),
           email: user.email,
-          name: user.name ?? undefined,
-          image: user.image ?? undefined,
+          name: user.name ?? "",
+          image: user.image ?? "",
         };
       },
     }),
@@ -49,7 +49,7 @@ export const authOptions = {
   callbacks: {
     async jwt({ token, user }: { token: any; user: any }) {
       if (user) {
-        token.id = user.id ?? token.sub;
+        token.id = user.id;
         token.email = user.email;
         token.name = user.name;
         token.image = user.image;
@@ -57,14 +57,14 @@ export const authOptions = {
       return token;
     },
     async session({ session, token }: { session: any; token: any }) {
-      if (token) {
-        session.user = {
-          id: token.id as string,
-          name: (token.name as string) ?? null,
-          email: (token.email as string) ?? null,
-          image: (token.picture as string) ?? (token.image as string) ?? null,
-        };
-      }
+      
+      session.user = {
+        id: token.id as string,
+        name: (token.name as string) ?? null,
+        email: (token.email as string) ?? null,
+        image: (token.picture as string) ?? (token.image as string) ?? null,
+      };
+
       return session;
     },
   },
