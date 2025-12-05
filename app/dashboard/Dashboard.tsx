@@ -1,5 +1,6 @@
 "use client";
 
+import NoPlans from "@/components/NoPlans";
 import { Plan } from "@/lib/types";
 import React, { useEffect, useState } from "react";
 
@@ -15,24 +16,33 @@ const Dashboard = (props: Props) => {
 
   useEffect(() => {
     const fetchAllPlans = async () => {
-      const response = await fetch(`/api/getAllPlans?id=${id}`);
-      const data = await response.json();
-      console.log("data = ", data);
+      try {
+        const response = await fetch(`/api/getAllPlans?id=${id}`);
+        const data = await response.json();
+        console.log("data = ", data);
 
-      if (data.plans.length === 0) {
-        setPlans([]);
-      } else {
-        setPlans(data.plans);
+        if (data.plans.length === 0) {
+          setPlans([]);
+        } else {
+          setPlans(data.plans);
+        }
+
+        setIsFetching(false);
+      } catch (error) {
+        console.log("error = ", error);
       }
-
-      setIsFetching(false);
     };
     fetchAllPlans();
   }, []);
 
   if (isFetching) return <div>Loading...</div>;
 
-  if (plans.length === 0) return <div>No Plans</div>;
+  if (plans.length === 0)
+    return (
+      <div>
+        <NoPlans />
+      </div>
+    );
 
   return <div className="text-white">Dashboard</div>;
 };

@@ -2233,88 +2233,88 @@ export namespace Prisma {
 
   export type PlanAvgAggregateOutputType = {
     id: number | null
-    userId: number | null
     lastPlanVersionId: number | null
+    userId: number | null
   }
 
   export type PlanSumAggregateOutputType = {
     id: number | null
-    userId: number | null
     lastPlanVersionId: number | null
+    userId: number | null
   }
 
   export type PlanMinAggregateOutputType = {
     id: number | null
-    userId: number | null
     label: string | null
     createdAt: Date | null
     startDate: Date | null
     endDate: Date | null
     lastPlanVersionId: number | null
+    userId: number | null
   }
 
   export type PlanMaxAggregateOutputType = {
     id: number | null
-    userId: number | null
     label: string | null
     createdAt: Date | null
     startDate: Date | null
     endDate: Date | null
     lastPlanVersionId: number | null
+    userId: number | null
   }
 
   export type PlanCountAggregateOutputType = {
     id: number
-    userId: number
     label: number
     createdAt: number
     startDate: number
     endDate: number
     lastPlanVersionId: number
+    userId: number
     _all: number
   }
 
 
   export type PlanAvgAggregateInputType = {
     id?: true
-    userId?: true
     lastPlanVersionId?: true
+    userId?: true
   }
 
   export type PlanSumAggregateInputType = {
     id?: true
-    userId?: true
     lastPlanVersionId?: true
+    userId?: true
   }
 
   export type PlanMinAggregateInputType = {
     id?: true
-    userId?: true
     label?: true
     createdAt?: true
     startDate?: true
     endDate?: true
     lastPlanVersionId?: true
+    userId?: true
   }
 
   export type PlanMaxAggregateInputType = {
     id?: true
-    userId?: true
     label?: true
     createdAt?: true
     startDate?: true
     endDate?: true
     lastPlanVersionId?: true
+    userId?: true
   }
 
   export type PlanCountAggregateInputType = {
     id?: true
-    userId?: true
     label?: true
     createdAt?: true
     startDate?: true
     endDate?: true
     lastPlanVersionId?: true
+    userId?: true
     _all?: true
   }
 
@@ -2406,12 +2406,12 @@ export namespace Prisma {
 
   export type PlanGroupByOutputType = {
     id: number
-    userId: number
     label: string | null
     createdAt: Date
     startDate: Date
     endDate: Date
-    lastPlanVersionId: number
+    lastPlanVersionId: number | null
+    userId: number
     _count: PlanCountAggregateOutputType | null
     _avg: PlanAvgAggregateOutputType | null
     _sum: PlanSumAggregateOutputType | null
@@ -2435,12 +2435,12 @@ export namespace Prisma {
 
   export type PlanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
     label?: boolean
     createdAt?: boolean
     startDate?: boolean
     endDate?: boolean
     lastPlanVersionId?: boolean
+    userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     versions?: boolean | Plan$versionsArgs<ExtArgs>
     _count?: boolean | PlanCountOutputTypeDefaultArgs<ExtArgs>
@@ -2448,37 +2448,37 @@ export namespace Prisma {
 
   export type PlanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
     label?: boolean
     createdAt?: boolean
     startDate?: boolean
     endDate?: boolean
     lastPlanVersionId?: boolean
+    userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["plan"]>
 
   export type PlanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
     label?: boolean
     createdAt?: boolean
     startDate?: boolean
     endDate?: boolean
     lastPlanVersionId?: boolean
+    userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["plan"]>
 
   export type PlanSelectScalar = {
     id?: boolean
-    userId?: boolean
     label?: boolean
     createdAt?: boolean
     startDate?: boolean
     endDate?: boolean
     lastPlanVersionId?: boolean
+    userId?: boolean
   }
 
-  export type PlanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "label" | "createdAt" | "startDate" | "endDate" | "lastPlanVersionId", ExtArgs["result"]["plan"]>
+  export type PlanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "createdAt" | "startDate" | "endDate" | "lastPlanVersionId" | "userId", ExtArgs["result"]["plan"]>
   export type PlanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     versions?: boolean | Plan$versionsArgs<ExtArgs>
@@ -2499,12 +2499,12 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      userId: number
       label: string | null
       createdAt: Date
       startDate: Date
       endDate: Date
-      lastPlanVersionId: number
+      lastPlanVersionId: number | null
+      userId: number
     }, ExtArgs["result"]["plan"]>
     composites: {}
   }
@@ -2931,12 +2931,12 @@ export namespace Prisma {
    */
   interface PlanFieldRefs {
     readonly id: FieldRef<"Plan", 'Int'>
-    readonly userId: FieldRef<"Plan", 'Int'>
     readonly label: FieldRef<"Plan", 'String'>
     readonly createdAt: FieldRef<"Plan", 'DateTime'>
     readonly startDate: FieldRef<"Plan", 'DateTime'>
     readonly endDate: FieldRef<"Plan", 'DateTime'>
     readonly lastPlanVersionId: FieldRef<"Plan", 'Int'>
+    readonly userId: FieldRef<"Plan", 'Int'>
   }
     
 
@@ -3389,25 +3389,24 @@ export namespace Prisma {
 
   export type PlanVersionAvgAggregateOutputType = {
     id: number | null
-    planId: number | null
     monthlyInvestment: number | null
     riskScore: number | null
     age: number | null
     income: number | null
+    planId: number | null
   }
 
   export type PlanVersionSumAggregateOutputType = {
     id: number | null
-    planId: number | null
     monthlyInvestment: number | null
     riskScore: number | null
     age: number | null
     income: number | null
+    planId: number | null
   }
 
   export type PlanVersionMinAggregateOutputType = {
     id: number | null
-    planId: number | null
     createdAt: Date | null
     monthlyInvestment: number | null
     riskScore: number | null
@@ -3416,11 +3415,11 @@ export namespace Prisma {
     age: number | null
     income: number | null
     notes: string | null
+    planId: number | null
   }
 
   export type PlanVersionMaxAggregateOutputType = {
     id: number | null
-    planId: number | null
     createdAt: Date | null
     monthlyInvestment: number | null
     riskScore: number | null
@@ -3429,11 +3428,11 @@ export namespace Prisma {
     age: number | null
     income: number | null
     notes: string | null
+    planId: number | null
   }
 
   export type PlanVersionCountAggregateOutputType = {
     id: number
-    planId: number
     createdAt: number
     monthlyInvestment: number
     riskScore: number
@@ -3442,31 +3441,31 @@ export namespace Prisma {
     age: number
     income: number
     notes: number
+    planId: number
     _all: number
   }
 
 
   export type PlanVersionAvgAggregateInputType = {
     id?: true
-    planId?: true
     monthlyInvestment?: true
     riskScore?: true
     age?: true
     income?: true
+    planId?: true
   }
 
   export type PlanVersionSumAggregateInputType = {
     id?: true
-    planId?: true
     monthlyInvestment?: true
     riskScore?: true
     age?: true
     income?: true
+    planId?: true
   }
 
   export type PlanVersionMinAggregateInputType = {
     id?: true
-    planId?: true
     createdAt?: true
     monthlyInvestment?: true
     riskScore?: true
@@ -3475,11 +3474,11 @@ export namespace Prisma {
     age?: true
     income?: true
     notes?: true
+    planId?: true
   }
 
   export type PlanVersionMaxAggregateInputType = {
     id?: true
-    planId?: true
     createdAt?: true
     monthlyInvestment?: true
     riskScore?: true
@@ -3488,11 +3487,11 @@ export namespace Prisma {
     age?: true
     income?: true
     notes?: true
+    planId?: true
   }
 
   export type PlanVersionCountAggregateInputType = {
     id?: true
-    planId?: true
     createdAt?: true
     monthlyInvestment?: true
     riskScore?: true
@@ -3501,6 +3500,7 @@ export namespace Prisma {
     age?: true
     income?: true
     notes?: true
+    planId?: true
     _all?: true
   }
 
@@ -3592,7 +3592,6 @@ export namespace Prisma {
 
   export type PlanVersionGroupByOutputType = {
     id: number
-    planId: number
     createdAt: Date
     monthlyInvestment: number
     riskScore: number
@@ -3601,6 +3600,7 @@ export namespace Prisma {
     age: number | null
     income: number | null
     notes: string | null
+    planId: number
     _count: PlanVersionCountAggregateOutputType | null
     _avg: PlanVersionAvgAggregateOutputType | null
     _sum: PlanVersionSumAggregateOutputType | null
@@ -3624,7 +3624,6 @@ export namespace Prisma {
 
   export type PlanVersionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    planId?: boolean
     createdAt?: boolean
     monthlyInvestment?: boolean
     riskScore?: boolean
@@ -3633,12 +3632,12 @@ export namespace Prisma {
     age?: boolean
     income?: boolean
     notes?: boolean
+    planId?: boolean
     plan?: boolean | PlanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["planVersion"]>
 
   export type PlanVersionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    planId?: boolean
     createdAt?: boolean
     monthlyInvestment?: boolean
     riskScore?: boolean
@@ -3647,12 +3646,12 @@ export namespace Prisma {
     age?: boolean
     income?: boolean
     notes?: boolean
+    planId?: boolean
     plan?: boolean | PlanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["planVersion"]>
 
   export type PlanVersionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    planId?: boolean
     createdAt?: boolean
     monthlyInvestment?: boolean
     riskScore?: boolean
@@ -3661,12 +3660,12 @@ export namespace Prisma {
     age?: boolean
     income?: boolean
     notes?: boolean
+    planId?: boolean
     plan?: boolean | PlanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["planVersion"]>
 
   export type PlanVersionSelectScalar = {
     id?: boolean
-    planId?: boolean
     createdAt?: boolean
     monthlyInvestment?: boolean
     riskScore?: boolean
@@ -3675,9 +3674,10 @@ export namespace Prisma {
     age?: boolean
     income?: boolean
     notes?: boolean
+    planId?: boolean
   }
 
-  export type PlanVersionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "planId" | "createdAt" | "monthlyInvestment" | "riskScore" | "startDate" | "endDate" | "age" | "income" | "notes", ExtArgs["result"]["planVersion"]>
+  export type PlanVersionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "monthlyInvestment" | "riskScore" | "startDate" | "endDate" | "age" | "income" | "notes" | "planId", ExtArgs["result"]["planVersion"]>
   export type PlanVersionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     plan?: boolean | PlanDefaultArgs<ExtArgs>
   }
@@ -3695,7 +3695,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      planId: number
       createdAt: Date
       monthlyInvestment: number
       riskScore: number
@@ -3704,6 +3703,7 @@ export namespace Prisma {
       age: number | null
       income: number | null
       notes: string | null
+      planId: number
     }, ExtArgs["result"]["planVersion"]>
     composites: {}
   }
@@ -4129,7 +4129,6 @@ export namespace Prisma {
    */
   interface PlanVersionFieldRefs {
     readonly id: FieldRef<"PlanVersion", 'Int'>
-    readonly planId: FieldRef<"PlanVersion", 'Int'>
     readonly createdAt: FieldRef<"PlanVersion", 'DateTime'>
     readonly monthlyInvestment: FieldRef<"PlanVersion", 'Int'>
     readonly riskScore: FieldRef<"PlanVersion", 'Int'>
@@ -4138,6 +4137,7 @@ export namespace Prisma {
     readonly age: FieldRef<"PlanVersion", 'Int'>
     readonly income: FieldRef<"PlanVersion", 'Int'>
     readonly notes: FieldRef<"PlanVersion", 'String'>
+    readonly planId: FieldRef<"PlanVersion", 'Int'>
   }
     
 
@@ -4581,12 +4581,12 @@ export namespace Prisma {
 
   export const PlanScalarFieldEnum: {
     id: 'id',
-    userId: 'userId',
     label: 'label',
     createdAt: 'createdAt',
     startDate: 'startDate',
     endDate: 'endDate',
-    lastPlanVersionId: 'lastPlanVersionId'
+    lastPlanVersionId: 'lastPlanVersionId',
+    userId: 'userId'
   };
 
   export type PlanScalarFieldEnum = (typeof PlanScalarFieldEnum)[keyof typeof PlanScalarFieldEnum]
@@ -4594,7 +4594,6 @@ export namespace Prisma {
 
   export const PlanVersionScalarFieldEnum: {
     id: 'id',
-    planId: 'planId',
     createdAt: 'createdAt',
     monthlyInvestment: 'monthlyInvestment',
     riskScore: 'riskScore',
@@ -4602,7 +4601,8 @@ export namespace Prisma {
     endDate: 'endDate',
     age: 'age',
     income: 'income',
-    notes: 'notes'
+    notes: 'notes',
+    planId: 'planId'
   };
 
   export type PlanVersionScalarFieldEnum = (typeof PlanVersionScalarFieldEnum)[keyof typeof PlanVersionScalarFieldEnum]
@@ -4768,24 +4768,24 @@ export namespace Prisma {
     OR?: PlanWhereInput[]
     NOT?: PlanWhereInput | PlanWhereInput[]
     id?: IntFilter<"Plan"> | number
-    userId?: IntFilter<"Plan"> | number
     label?: StringNullableFilter<"Plan"> | string | null
     createdAt?: DateTimeFilter<"Plan"> | Date | string
     startDate?: DateTimeFilter<"Plan"> | Date | string
     endDate?: DateTimeFilter<"Plan"> | Date | string
-    lastPlanVersionId?: IntFilter<"Plan"> | number
+    lastPlanVersionId?: IntNullableFilter<"Plan"> | number | null
+    userId?: IntFilter<"Plan"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     versions?: PlanVersionListRelationFilter
   }
 
   export type PlanOrderByWithRelationInput = {
     id?: SortOrder
-    userId?: SortOrder
     label?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    lastPlanVersionId?: SortOrder
+    lastPlanVersionId?: SortOrderInput | SortOrder
+    userId?: SortOrder
     user?: UserOrderByWithRelationInput
     versions?: PlanVersionOrderByRelationAggregateInput
   }
@@ -4795,24 +4795,24 @@ export namespace Prisma {
     AND?: PlanWhereInput | PlanWhereInput[]
     OR?: PlanWhereInput[]
     NOT?: PlanWhereInput | PlanWhereInput[]
-    userId?: IntFilter<"Plan"> | number
     label?: StringNullableFilter<"Plan"> | string | null
     createdAt?: DateTimeFilter<"Plan"> | Date | string
     startDate?: DateTimeFilter<"Plan"> | Date | string
     endDate?: DateTimeFilter<"Plan"> | Date | string
-    lastPlanVersionId?: IntFilter<"Plan"> | number
+    lastPlanVersionId?: IntNullableFilter<"Plan"> | number | null
+    userId?: IntFilter<"Plan"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     versions?: PlanVersionListRelationFilter
   }, "id">
 
   export type PlanOrderByWithAggregationInput = {
     id?: SortOrder
-    userId?: SortOrder
     label?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    lastPlanVersionId?: SortOrder
+    lastPlanVersionId?: SortOrderInput | SortOrder
+    userId?: SortOrder
     _count?: PlanCountOrderByAggregateInput
     _avg?: PlanAvgOrderByAggregateInput
     _max?: PlanMaxOrderByAggregateInput
@@ -4825,12 +4825,12 @@ export namespace Prisma {
     OR?: PlanScalarWhereWithAggregatesInput[]
     NOT?: PlanScalarWhereWithAggregatesInput | PlanScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Plan"> | number
-    userId?: IntWithAggregatesFilter<"Plan"> | number
     label?: StringNullableWithAggregatesFilter<"Plan"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Plan"> | Date | string
     startDate?: DateTimeWithAggregatesFilter<"Plan"> | Date | string
     endDate?: DateTimeWithAggregatesFilter<"Plan"> | Date | string
-    lastPlanVersionId?: IntWithAggregatesFilter<"Plan"> | number
+    lastPlanVersionId?: IntNullableWithAggregatesFilter<"Plan"> | number | null
+    userId?: IntWithAggregatesFilter<"Plan"> | number
   }
 
   export type PlanVersionWhereInput = {
@@ -4838,7 +4838,6 @@ export namespace Prisma {
     OR?: PlanVersionWhereInput[]
     NOT?: PlanVersionWhereInput | PlanVersionWhereInput[]
     id?: IntFilter<"PlanVersion"> | number
-    planId?: IntFilter<"PlanVersion"> | number
     createdAt?: DateTimeFilter<"PlanVersion"> | Date | string
     monthlyInvestment?: IntFilter<"PlanVersion"> | number
     riskScore?: IntFilter<"PlanVersion"> | number
@@ -4847,12 +4846,12 @@ export namespace Prisma {
     age?: IntNullableFilter<"PlanVersion"> | number | null
     income?: IntNullableFilter<"PlanVersion"> | number | null
     notes?: StringNullableFilter<"PlanVersion"> | string | null
+    planId?: IntFilter<"PlanVersion"> | number
     plan?: XOR<PlanScalarRelationFilter, PlanWhereInput>
   }
 
   export type PlanVersionOrderByWithRelationInput = {
     id?: SortOrder
-    planId?: SortOrder
     createdAt?: SortOrder
     monthlyInvestment?: SortOrder
     riskScore?: SortOrder
@@ -4861,6 +4860,7 @@ export namespace Prisma {
     age?: SortOrderInput | SortOrder
     income?: SortOrderInput | SortOrder
     notes?: SortOrderInput | SortOrder
+    planId?: SortOrder
     plan?: PlanOrderByWithRelationInput
   }
 
@@ -4869,7 +4869,6 @@ export namespace Prisma {
     AND?: PlanVersionWhereInput | PlanVersionWhereInput[]
     OR?: PlanVersionWhereInput[]
     NOT?: PlanVersionWhereInput | PlanVersionWhereInput[]
-    planId?: IntFilter<"PlanVersion"> | number
     createdAt?: DateTimeFilter<"PlanVersion"> | Date | string
     monthlyInvestment?: IntFilter<"PlanVersion"> | number
     riskScore?: IntFilter<"PlanVersion"> | number
@@ -4878,12 +4877,12 @@ export namespace Prisma {
     age?: IntNullableFilter<"PlanVersion"> | number | null
     income?: IntNullableFilter<"PlanVersion"> | number | null
     notes?: StringNullableFilter<"PlanVersion"> | string | null
+    planId?: IntFilter<"PlanVersion"> | number
     plan?: XOR<PlanScalarRelationFilter, PlanWhereInput>
   }, "id">
 
   export type PlanVersionOrderByWithAggregationInput = {
     id?: SortOrder
-    planId?: SortOrder
     createdAt?: SortOrder
     monthlyInvestment?: SortOrder
     riskScore?: SortOrder
@@ -4892,6 +4891,7 @@ export namespace Prisma {
     age?: SortOrderInput | SortOrder
     income?: SortOrderInput | SortOrder
     notes?: SortOrderInput | SortOrder
+    planId?: SortOrder
     _count?: PlanVersionCountOrderByAggregateInput
     _avg?: PlanVersionAvgOrderByAggregateInput
     _max?: PlanVersionMaxOrderByAggregateInput
@@ -4904,7 +4904,6 @@ export namespace Prisma {
     OR?: PlanVersionScalarWhereWithAggregatesInput[]
     NOT?: PlanVersionScalarWhereWithAggregatesInput | PlanVersionScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"PlanVersion"> | number
-    planId?: IntWithAggregatesFilter<"PlanVersion"> | number
     createdAt?: DateTimeWithAggregatesFilter<"PlanVersion"> | Date | string
     monthlyInvestment?: IntWithAggregatesFilter<"PlanVersion"> | number
     riskScore?: IntWithAggregatesFilter<"PlanVersion"> | number
@@ -4913,6 +4912,7 @@ export namespace Prisma {
     age?: IntNullableWithAggregatesFilter<"PlanVersion"> | number | null
     income?: IntNullableWithAggregatesFilter<"PlanVersion"> | number | null
     notes?: StringNullableWithAggregatesFilter<"PlanVersion"> | string | null
+    planId?: IntWithAggregatesFilter<"PlanVersion"> | number
   }
 
   export type UserCreateInput = {
@@ -4991,19 +4991,19 @@ export namespace Prisma {
     createdAt?: Date | string
     startDate: Date | string
     endDate: Date | string
-    lastPlanVersionId: number
+    lastPlanVersionId?: number | null
     user: UserCreateNestedOneWithoutPlansInput
     versions?: PlanVersionCreateNestedManyWithoutPlanInput
   }
 
   export type PlanUncheckedCreateInput = {
     id?: number
-    userId: number
     label?: string | null
     createdAt?: Date | string
     startDate: Date | string
     endDate: Date | string
-    lastPlanVersionId: number
+    lastPlanVersionId?: number | null
+    userId: number
     versions?: PlanVersionUncheckedCreateNestedManyWithoutPlanInput
   }
 
@@ -5012,30 +5012,30 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    lastPlanVersionId?: IntFieldUpdateOperationsInput | number
+    lastPlanVersionId?: NullableIntFieldUpdateOperationsInput | number | null
     user?: UserUpdateOneRequiredWithoutPlansNestedInput
     versions?: PlanVersionUpdateManyWithoutPlanNestedInput
   }
 
   export type PlanUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
     label?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    lastPlanVersionId?: IntFieldUpdateOperationsInput | number
+    lastPlanVersionId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
     versions?: PlanVersionUncheckedUpdateManyWithoutPlanNestedInput
   }
 
   export type PlanCreateManyInput = {
     id?: number
-    userId: number
     label?: string | null
     createdAt?: Date | string
     startDate: Date | string
     endDate: Date | string
-    lastPlanVersionId: number
+    lastPlanVersionId?: number | null
+    userId: number
   }
 
   export type PlanUpdateManyMutationInput = {
@@ -5043,17 +5043,17 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    lastPlanVersionId?: IntFieldUpdateOperationsInput | number
+    lastPlanVersionId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PlanUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
     label?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    lastPlanVersionId?: IntFieldUpdateOperationsInput | number
+    lastPlanVersionId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type PlanVersionCreateInput = {
@@ -5070,7 +5070,6 @@ export namespace Prisma {
 
   export type PlanVersionUncheckedCreateInput = {
     id?: number
-    planId: number
     createdAt?: Date | string
     monthlyInvestment: number
     riskScore: number
@@ -5079,6 +5078,7 @@ export namespace Prisma {
     age?: number | null
     income?: number | null
     notes?: string | null
+    planId: number
   }
 
   export type PlanVersionUpdateInput = {
@@ -5095,7 +5095,6 @@ export namespace Prisma {
 
   export type PlanVersionUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    planId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     monthlyInvestment?: IntFieldUpdateOperationsInput | number
     riskScore?: IntFieldUpdateOperationsInput | number
@@ -5104,11 +5103,11 @@ export namespace Prisma {
     age?: NullableIntFieldUpdateOperationsInput | number | null
     income?: NullableIntFieldUpdateOperationsInput | number | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    planId?: IntFieldUpdateOperationsInput | number
   }
 
   export type PlanVersionCreateManyInput = {
     id?: number
-    planId: number
     createdAt?: Date | string
     monthlyInvestment: number
     riskScore: number
@@ -5117,6 +5116,7 @@ export namespace Prisma {
     age?: number | null
     income?: number | null
     notes?: string | null
+    planId: number
   }
 
   export type PlanVersionUpdateManyMutationInput = {
@@ -5132,7 +5132,6 @@ export namespace Prisma {
 
   export type PlanVersionUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    planId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     monthlyInvestment?: IntFieldUpdateOperationsInput | number
     riskScore?: IntFieldUpdateOperationsInput | number
@@ -5141,6 +5140,7 @@ export namespace Prisma {
     age?: NullableIntFieldUpdateOperationsInput | number | null
     income?: NullableIntFieldUpdateOperationsInput | number | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    planId?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -5314,6 +5314,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -5331,117 +5342,44 @@ export namespace Prisma {
 
   export type PlanCountOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     label?: SortOrder
     createdAt?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     lastPlanVersionId?: SortOrder
+    userId?: SortOrder
   }
 
   export type PlanAvgOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     lastPlanVersionId?: SortOrder
+    userId?: SortOrder
   }
 
   export type PlanMaxOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     label?: SortOrder
     createdAt?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     lastPlanVersionId?: SortOrder
+    userId?: SortOrder
   }
 
   export type PlanMinOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     label?: SortOrder
     createdAt?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     lastPlanVersionId?: SortOrder
+    userId?: SortOrder
   }
 
   export type PlanSumOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     lastPlanVersionId?: SortOrder
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type PlanScalarRelationFilter = {
-    is?: PlanWhereInput
-    isNot?: PlanWhereInput
-  }
-
-  export type PlanVersionCountOrderByAggregateInput = {
-    id?: SortOrder
-    planId?: SortOrder
-    createdAt?: SortOrder
-    monthlyInvestment?: SortOrder
-    riskScore?: SortOrder
-    startDate?: SortOrder
-    endDate?: SortOrder
-    age?: SortOrder
-    income?: SortOrder
-    notes?: SortOrder
-  }
-
-  export type PlanVersionAvgOrderByAggregateInput = {
-    id?: SortOrder
-    planId?: SortOrder
-    monthlyInvestment?: SortOrder
-    riskScore?: SortOrder
-    age?: SortOrder
-    income?: SortOrder
-  }
-
-  export type PlanVersionMaxOrderByAggregateInput = {
-    id?: SortOrder
-    planId?: SortOrder
-    createdAt?: SortOrder
-    monthlyInvestment?: SortOrder
-    riskScore?: SortOrder
-    startDate?: SortOrder
-    endDate?: SortOrder
-    age?: SortOrder
-    income?: SortOrder
-    notes?: SortOrder
-  }
-
-  export type PlanVersionMinOrderByAggregateInput = {
-    id?: SortOrder
-    planId?: SortOrder
-    createdAt?: SortOrder
-    monthlyInvestment?: SortOrder
-    riskScore?: SortOrder
-    startDate?: SortOrder
-    endDate?: SortOrder
-    age?: SortOrder
-    income?: SortOrder
-    notes?: SortOrder
-  }
-
-  export type PlanVersionSumOrderByAggregateInput = {
-    id?: SortOrder
-    planId?: SortOrder
-    monthlyInvestment?: SortOrder
-    riskScore?: SortOrder
-    age?: SortOrder
-    income?: SortOrder
+    userId?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5458,6 +5396,68 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type PlanScalarRelationFilter = {
+    is?: PlanWhereInput
+    isNot?: PlanWhereInput
+  }
+
+  export type PlanVersionCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    monthlyInvestment?: SortOrder
+    riskScore?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    age?: SortOrder
+    income?: SortOrder
+    notes?: SortOrder
+    planId?: SortOrder
+  }
+
+  export type PlanVersionAvgOrderByAggregateInput = {
+    id?: SortOrder
+    monthlyInvestment?: SortOrder
+    riskScore?: SortOrder
+    age?: SortOrder
+    income?: SortOrder
+    planId?: SortOrder
+  }
+
+  export type PlanVersionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    monthlyInvestment?: SortOrder
+    riskScore?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    age?: SortOrder
+    income?: SortOrder
+    notes?: SortOrder
+    planId?: SortOrder
+  }
+
+  export type PlanVersionMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    monthlyInvestment?: SortOrder
+    riskScore?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    age?: SortOrder
+    income?: SortOrder
+    notes?: SortOrder
+    planId?: SortOrder
+  }
+
+  export type PlanVersionSumOrderByAggregateInput = {
+    id?: SortOrder
+    monthlyInvestment?: SortOrder
+    riskScore?: SortOrder
+    age?: SortOrder
+    income?: SortOrder
+    planId?: SortOrder
   }
 
   export type PlanCreateNestedManyWithoutUserInput = {
@@ -5542,6 +5542,14 @@ export namespace Prisma {
     connect?: PlanVersionWhereUniqueInput | PlanVersionWhereUniqueInput[]
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type UserUpdateOneRequiredWithoutPlansNestedInput = {
     create?: XOR<UserCreateWithoutPlansInput, UserUncheckedCreateWithoutPlansInput>
     connectOrCreate?: UserCreateOrConnectWithoutPlansInput
@@ -5582,14 +5590,6 @@ export namespace Prisma {
     create?: XOR<PlanCreateWithoutVersionsInput, PlanUncheckedCreateWithoutVersionsInput>
     connectOrCreate?: PlanCreateOrConnectWithoutVersionsInput
     connect?: PlanWhereUniqueInput
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type PlanUpdateOneRequiredWithoutVersionsNestedInput = {
@@ -5768,7 +5768,7 @@ export namespace Prisma {
     createdAt?: Date | string
     startDate: Date | string
     endDate: Date | string
-    lastPlanVersionId: number
+    lastPlanVersionId?: number | null
     versions?: PlanVersionCreateNestedManyWithoutPlanInput
   }
 
@@ -5778,7 +5778,7 @@ export namespace Prisma {
     createdAt?: Date | string
     startDate: Date | string
     endDate: Date | string
-    lastPlanVersionId: number
+    lastPlanVersionId?: number | null
     versions?: PlanVersionUncheckedCreateNestedManyWithoutPlanInput
   }
 
@@ -5813,12 +5813,12 @@ export namespace Prisma {
     OR?: PlanScalarWhereInput[]
     NOT?: PlanScalarWhereInput | PlanScalarWhereInput[]
     id?: IntFilter<"Plan"> | number
-    userId?: IntFilter<"Plan"> | number
     label?: StringNullableFilter<"Plan"> | string | null
     createdAt?: DateTimeFilter<"Plan"> | Date | string
     startDate?: DateTimeFilter<"Plan"> | Date | string
     endDate?: DateTimeFilter<"Plan"> | Date | string
-    lastPlanVersionId?: IntFilter<"Plan"> | number
+    lastPlanVersionId?: IntNullableFilter<"Plan"> | number | null
+    userId?: IntFilter<"Plan"> | number
   }
 
   export type UserCreateWithoutPlansInput = {
@@ -5929,7 +5929,6 @@ export namespace Prisma {
     OR?: PlanVersionScalarWhereInput[]
     NOT?: PlanVersionScalarWhereInput | PlanVersionScalarWhereInput[]
     id?: IntFilter<"PlanVersion"> | number
-    planId?: IntFilter<"PlanVersion"> | number
     createdAt?: DateTimeFilter<"PlanVersion"> | Date | string
     monthlyInvestment?: IntFilter<"PlanVersion"> | number
     riskScore?: IntFilter<"PlanVersion"> | number
@@ -5938,6 +5937,7 @@ export namespace Prisma {
     age?: IntNullableFilter<"PlanVersion"> | number | null
     income?: IntNullableFilter<"PlanVersion"> | number | null
     notes?: StringNullableFilter<"PlanVersion"> | string | null
+    planId?: IntFilter<"PlanVersion"> | number
   }
 
   export type PlanCreateWithoutVersionsInput = {
@@ -5945,18 +5945,18 @@ export namespace Prisma {
     createdAt?: Date | string
     startDate: Date | string
     endDate: Date | string
-    lastPlanVersionId: number
+    lastPlanVersionId?: number | null
     user: UserCreateNestedOneWithoutPlansInput
   }
 
   export type PlanUncheckedCreateWithoutVersionsInput = {
     id?: number
-    userId: number
     label?: string | null
     createdAt?: Date | string
     startDate: Date | string
     endDate: Date | string
-    lastPlanVersionId: number
+    lastPlanVersionId?: number | null
+    userId: number
   }
 
   export type PlanCreateOrConnectWithoutVersionsInput = {
@@ -5980,18 +5980,18 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    lastPlanVersionId?: IntFieldUpdateOperationsInput | number
+    lastPlanVersionId?: NullableIntFieldUpdateOperationsInput | number | null
     user?: UserUpdateOneRequiredWithoutPlansNestedInput
   }
 
   export type PlanUncheckedUpdateWithoutVersionsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
     label?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    lastPlanVersionId?: IntFieldUpdateOperationsInput | number
+    lastPlanVersionId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type PlanCreateManyUserInput = {
@@ -6000,7 +6000,7 @@ export namespace Prisma {
     createdAt?: Date | string
     startDate: Date | string
     endDate: Date | string
-    lastPlanVersionId: number
+    lastPlanVersionId?: number | null
   }
 
   export type PlanUpdateWithoutUserInput = {
@@ -6008,7 +6008,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    lastPlanVersionId?: IntFieldUpdateOperationsInput | number
+    lastPlanVersionId?: NullableIntFieldUpdateOperationsInput | number | null
     versions?: PlanVersionUpdateManyWithoutPlanNestedInput
   }
 
@@ -6018,7 +6018,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    lastPlanVersionId?: IntFieldUpdateOperationsInput | number
+    lastPlanVersionId?: NullableIntFieldUpdateOperationsInput | number | null
     versions?: PlanVersionUncheckedUpdateManyWithoutPlanNestedInput
   }
 
@@ -6028,7 +6028,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    lastPlanVersionId?: IntFieldUpdateOperationsInput | number
+    lastPlanVersionId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PlanVersionCreateManyPlanInput = {

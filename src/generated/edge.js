@@ -104,17 +104,16 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.PlanScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
   label: 'label',
   createdAt: 'createdAt',
   startDate: 'startDate',
   endDate: 'endDate',
-  lastPlanVersionId: 'lastPlanVersionId'
+  lastPlanVersionId: 'lastPlanVersionId',
+  userId: 'userId'
 };
 
 exports.Prisma.PlanVersionScalarFieldEnum = {
   id: 'id',
-  planId: 'planId',
   createdAt: 'createdAt',
   monthlyInvestment: 'monthlyInvestment',
   riskScore: 'riskScore',
@@ -122,7 +121,8 @@ exports.Prisma.PlanVersionScalarFieldEnum = {
   endDate: 'endDate',
   age: 'age',
   income: 'income',
-  notes: 'notes'
+  notes: 'notes',
+  planId: 'planId'
 };
 
 exports.Prisma.SortOrder = {
@@ -154,10 +154,10 @@ const config = {
   "clientVersion": "7.0.1",
   "engineVersion": "f09f2815f091dbba658cdcd2264306d88bb5bda6",
   "activeProvider": "postgresql",
-  "inlineSchema": "datasource db {\n  provider = \"postgresql\"\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated\"\n}\n\nmodel User {\n  id        Int      @id @default(autoincrement())\n  email     String   @unique\n  password  String\n  name      String?\n  phone     String?\n  image     String?\n  createdAt DateTime @default(now())\n\n  plans Plan[]\n}\n\nmodel Plan {\n  id        Int      @id @default(autoincrement())\n  userId    Int\n  label     String? // (optional: \"My SIP Plan\")\n  createdAt DateTime @default(now())\n\n  startDate         DateTime\n  endDate           DateTime\n  lastPlanVersionId Int\n\n  // Relation\n  user     User          @relation(fields: [userId], references: [id])\n  versions PlanVersion[]\n}\n\nmodel PlanVersion {\n  id        Int      @id @default(autoincrement())\n  planId    Int\n  createdAt DateTime @default(now())\n\n  monthlyInvestment Int // M\n  riskScore         Int // 1..10\n\n  startDate DateTime // When this version becomes active\n  endDate   DateTime // When this version is no longer active \n\n  // Optional but useful now (minimal)\n  age    Int?\n  income Int?\n  notes  String?\n\n  // Relation\n  plan Plan @relation(fields: [planId], references: [id])\n}\n"
+  "inlineSchema": "datasource db {\n  provider = \"postgresql\"\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated\"\n}\n\nmodel User {\n  id        Int      @id @default(autoincrement())\n  email     String   @unique\n  password  String\n  name      String?\n  phone     String?\n  image     String?\n  createdAt DateTime @default(now())\n\n  plans Plan[]\n}\n\nmodel Plan {\n  id        Int      @id @default(autoincrement())\n  label     String?\n  createdAt DateTime @default(now())\n\n  startDate         DateTime\n  endDate           DateTime\n  lastPlanVersionId Int?\n\n  userId Int\n  user   User @relation(fields: [userId], references: [id])\n\n  versions PlanVersion[]\n}\n\nmodel PlanVersion {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now())\n\n  monthlyInvestment Int\n  riskScore         Int\n\n  startDate DateTime\n  endDate   DateTime\n\n  age    Int?\n  income Int?\n  notes  String?\n\n  planId Int\n  plan   Plan @relation(fields: [planId], references: [id])\n}\n"
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"plans\",\"kind\":\"object\",\"type\":\"Plan\",\"relationName\":\"PlanToUser\"}],\"dbName\":null},\"Plan\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"label\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"startDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"endDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"lastPlanVersionId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"PlanToUser\"},{\"name\":\"versions\",\"kind\":\"object\",\"type\":\"PlanVersion\",\"relationName\":\"PlanToPlanVersion\"}],\"dbName\":null},\"PlanVersion\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"planId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"monthlyInvestment\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"riskScore\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"startDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"endDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"age\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"income\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"notes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"plan\",\"kind\":\"object\",\"type\":\"Plan\",\"relationName\":\"PlanToPlanVersion\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"plans\",\"kind\":\"object\",\"type\":\"Plan\",\"relationName\":\"PlanToUser\"}],\"dbName\":null},\"Plan\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"label\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"startDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"endDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"lastPlanVersionId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"PlanToUser\"},{\"name\":\"versions\",\"kind\":\"object\",\"type\":\"PlanVersion\",\"relationName\":\"PlanToPlanVersion\"}],\"dbName\":null},\"PlanVersion\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"monthlyInvestment\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"riskScore\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"startDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"endDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"age\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"income\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"notes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"planId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"plan\",\"kind\":\"object\",\"type\":\"Plan\",\"relationName\":\"PlanToPlanVersion\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.compilerWasm = {
   getRuntime: async () => require('./query_compiler_bg.js'),

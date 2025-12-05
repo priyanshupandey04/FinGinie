@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
   try {
     const plans = await prisma.plan.findMany({
       where: {
-        userId: parseInt(id),
+        id: parseInt(id),
       },
       select: {
         id: true,

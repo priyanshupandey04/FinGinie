@@ -132,17 +132,16 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.PlanScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
   label: 'label',
   createdAt: 'createdAt',
   startDate: 'startDate',
   endDate: 'endDate',
-  lastPlanVersionId: 'lastPlanVersionId'
+  lastPlanVersionId: 'lastPlanVersionId',
+  userId: 'userId'
 };
 
 exports.Prisma.PlanVersionScalarFieldEnum = {
   id: 'id',
-  planId: 'planId',
   createdAt: 'createdAt',
   monthlyInvestment: 'monthlyInvestment',
   riskScore: 'riskScore',
@@ -150,7 +149,8 @@ exports.Prisma.PlanVersionScalarFieldEnum = {
   endDate: 'endDate',
   age: 'age',
   income: 'income',
-  notes: 'notes'
+  notes: 'notes',
+  planId: 'planId'
 };
 
 exports.Prisma.SortOrder = {
