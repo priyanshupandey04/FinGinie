@@ -1,6 +1,7 @@
 // src/lib/finance.ts
 
-import { PlanVersion } from "@prisma/client";
+import { PlanVersion } from "@/src/generated";
+
 
 // --- CONSTANTS ---
 export const ASSET_RATES = {
