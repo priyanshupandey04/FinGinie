@@ -24,6 +24,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 
 // --- Zod Schema Validation ---
 const formSchema = z.object({
@@ -224,6 +225,7 @@ const AILoader = ({
 // --- Main Page Component ---
 
 export default function CreatePlanPage() {
+  const router = useRouter();
   const [theme, setTheme] = useState<ThemeMode>("dark");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -303,6 +305,10 @@ export default function CreatePlanPage() {
           body: JSON.stringify(formData),
         });
         const data = await res.json();
+
+        if (data.success) {
+          router.push("/dashboard");
+        }
 
         console.log("data = ", data);
       };
