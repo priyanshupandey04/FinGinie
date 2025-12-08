@@ -27,6 +27,18 @@ export async function GET(req: NextRequest) {
         endDate: true,
         createdAt: true,
         lastPlanVersionId: true,
+        versions:{
+          select: {
+            id: true,
+            monthlyInvestment: true,
+            riskScore: true,
+            startDate: true,
+            endDate: true,
+            age: true,
+            income: true,
+            notes: true,
+          }
+        }
       },
     });
 

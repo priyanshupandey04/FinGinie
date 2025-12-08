@@ -24,6 +24,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 
 // --- Zod Schema Validation ---
 const formSchema = z.object({
@@ -170,12 +171,12 @@ const AILoader = ({
       setStep((prev) => {
         if (prev == steps.length - 1) {
           clearInterval(interval);
-          setTimeout(onComplete, 800);
+          setTimeout(onComplete, 1500);
           return prev;
         }
         return prev + 1;
       });
-    }, 800);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, []);
@@ -227,6 +228,7 @@ export default function CreatePlanPage() {
   const [theme, setTheme] = useState<ThemeMode>("dark");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const router = useRouter();
 
   const styles = THEMES[theme];
 
@@ -305,6 +307,8 @@ export default function CreatePlanPage() {
         const data = await res.json();
 
         console.log("data = ", data);
+        await new Promise((r) => setTimeout(r, 1500));
+        router.push(`/dashboard/`);
       };
 
       createPlan();
