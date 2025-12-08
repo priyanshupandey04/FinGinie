@@ -12,7 +12,6 @@ const planSchema = z.object({
     .max(100000, "Max investment is 1,00,000"),
   period: z.coerce.number().min(1, "Min 1 year").max(50, "Max 50 years"),
   riskScore: z.coerce.number().min(1).max(10),
-  // Added these fields from your form
   age: z.coerce.number().optional(),
   annualIncome: z.coerce.number().optional(),
   goalDescription: z.string().optional(),
@@ -38,6 +37,7 @@ export async function POST(req: Request) {
       );
     }
 
+    console.log("parsed data = ", parsed.data);
     const {
       monthlyInvestment,
       period,
@@ -91,6 +91,7 @@ export async function POST(req: Request) {
         },
       });
 
+      console.log("updated plan = ", updatedPlan);
       return updatedPlan;
     });
 
